@@ -42,4 +42,14 @@ Reduced power consumption and improved acoustics are **design hypotheses**. The 
 
 [Read the complete design proposal](../assets/documents/speaker-design-proposal.pdf)
 
+## Visual gallery
+
+### Original design sketch
+
+Speaker concept notebook sketch
+---
+[![Speaker concept notebook sketch](../assets/images/speaker-sketch.jpg)](../assets/images/speaker-sketch.jpg)
+
+Select any image to open it at full size.
+
 [Back to portfolio](../README.md)

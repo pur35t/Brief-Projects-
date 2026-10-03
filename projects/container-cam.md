@@ -38,4 +38,46 @@ The star container STEP files appear in the Chest Cool Assembly archive. They ma
 
 Specify fit tolerances and stock dimensions with explicit units, review tool clearance, and make a physical prototype. Compare actual fit and finish against the CAD model.
 
+## Visual gallery
+
+### Base and lid geometry
+
+Base CAD view | Lid CAD view
+--- | ---
+[![Base CAD view](../assets/images/container-base-iso.jpg)](../assets/images/container-base-iso.jpg) | [![Lid CAD view](../assets/images/container-lid-iso.jpg)](../assets/images/container-lid-iso.jpg)
+
+Base end view | Lid end view
+--- | ---
+[![Base end view](../assets/images/container-base-front.jpg)](../assets/images/container-base-front.jpg) | [![Lid end view](../assets/images/container-lid-front.jpg)](../assets/images/container-lid-front.jpg)
+
+Original base CAD screenshot | Original lid CAD screenshot
+--- | ---
+[![Original base CAD screenshot](../assets/images/container-base.png)](../assets/images/container-base.png) | [![Original lid CAD screenshot](../assets/images/container-lid.png)](../assets/images/container-lid.png)
+
+### Dimensions and fit
+
+Dimensioned top view | Dimensioned side view | Fit sketch
+--- | --- | ---
+[![Dimensioned top view](../assets/images/container-dimensions.png)](../assets/images/container-dimensions.png) | [![Dimensioned side view](../assets/images/container-side-dimensions.png)](../assets/images/container-side-dimensions.png) | [![Fit sketch](../assets/images/container-fit-sketch.jpg)](../assets/images/container-fit-sketch.jpg)
+
+### Design sketches
+
+Initial container sketch
+---
+[![Initial container sketch](../assets/images/container-sketch.jpg)](../assets/images/container-sketch.jpg)
+
+### Toolpath planning
+
+Lid toolpath | Drilling exercise | Pocket simulation
+--- | --- | ---
+[![Lid toolpath](../assets/images/container-lid-toolpath.png)](../assets/images/container-lid-toolpath.png) | [![Drilling exercise](../assets/images/cam-drilling.png)](../assets/images/cam-drilling.png) | [![Pocket simulation](../assets/images/cam-pocket-simulation.png)](../assets/images/cam-pocket-simulation.png)
+
+### Surface machining
+
+Complex surface toolpath
+---
+[![Complex surface toolpath](../assets/images/cam-complex-surface.png)](../assets/images/cam-complex-surface.png)
+
+Select any image to open it at full size.
+
 [Back to portfolio](../README.md)

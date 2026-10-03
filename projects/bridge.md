@@ -24,4 +24,14 @@ Verify the base geometry before adding reinforcement. More bracing cannot recove
 
 This bridge is separate from the balsa tower mentioned in other project descriptions. No tower load result is attributed to this build.
 
+## Visual gallery
+
+### Construction and notebook record
+
+Construction progression | Engineering notebook
+--- | ---
+[![Construction progression](../assets/images/bridge-construction.jpg)](../assets/images/bridge-construction.jpg) | [![Engineering notebook](../assets/images/bridge-notebook.jpg)](../assets/images/bridge-notebook.jpg)
+
+Select any image to open it at full size.
+
 [Back to portfolio](../README.md)

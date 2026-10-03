@@ -16,6 +16,16 @@ The cooler assembly is stored in the archive’s `emili folder`. The `rigo folde
 
 The NC files are retained only in the original upload. They have not been validated for a machine, stock, or controller and are not included as runnable portfolio examples.
 
-**Next documentation step:** identify my contribution and add a rendered assembly view or physical build photograph before making this a featured project.
+**Next documentation step:** identify my contribution and add a physical build photograph before making this a featured project.
+
+## Visual gallery
+
+### Team assembly views
+
+Assembly isometric view | Assembly end view
+--- | ---
+[![Assembly isometric view](../assets/images/cooler-team-assembly-iso.jpg)](../assets/images/cooler-team-assembly-iso.jpg) | [![Assembly end view](../assets/images/cooler-team-assembly-front.jpg)](../assets/images/cooler-team-assembly-front.jpg)
+
+Select any image to open it at full size.
 
 [Back to portfolio](../README.md)

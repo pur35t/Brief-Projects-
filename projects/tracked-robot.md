@@ -36,4 +36,28 @@ Start software testing while the chassis is still simple. Verify each sensor ind
 
 **Source:** `Engineering_WrittenReport_Template.docx`, titled “Automated Guided Vehicle Project Tank Edition.”
 
+## Visual gallery
+
+### Build progression
+
+Chassis and drivetrain | Assembly stage | Side view
+--- | --- | ---
+[![Chassis and drivetrain](../assets/images/agv-drivetrain.jpg)](../assets/images/agv-drivetrain.jpg) | [![Assembly stage](../assets/images/agv-assembly-stage.jpg)](../assets/images/agv-assembly-stage.jpg) | [![Side view](../assets/images/agv-side.jpg)](../assets/images/agv-side.jpg)
+
+### Integrated hardware
+
+Sensor-facing view | Initial concept sketch
+--- | ---
+[![Sensor-facing view](../assets/images/agv-sensors.jpg)](../assets/images/agv-sensors.jpg) | [![Initial concept sketch](../assets/images/agv-sketch.jpg)](../assets/images/agv-sketch.jpg)
+
+### Programming evidence
+
+RobotC code screenshot | Sensor configuration screenshot
+--- | ---
+[![RobotC code screenshot](../assets/images/agv-code.jpg)](../assets/images/agv-code.jpg) | [![Sensor configuration screenshot](../assets/images/agv-configuration.jpg)](../assets/images/agv-configuration.jpg)
+
+[![Additional RobotC code detail](../assets/images/agv-code-detail.jpg)](../assets/images/agv-code-detail.jpg)
+
+Select any image to open it at full size.
+
 [Back to portfolio](../README.md)

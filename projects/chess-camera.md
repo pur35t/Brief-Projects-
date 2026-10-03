@@ -14,6 +14,20 @@ The project used calibrated board-square geometry to associate image locations w
 
 The key idea was to use information the system already knew about the game. A visual change became a candidate state transition that could be checked against the current position.
 
+## System overview
+
+The following diagram summarizes the approach described above.
+
+```mermaid
+flowchart TD
+    A[Camera image] --> B[Visual changes]
+    C[Calibrated square geometry] --> D[Candidate move]
+    B --> D
+    E[Previous board state] --> D
+    F[Chess constraints] --> D
+    D --> G[Recorded move]
+```
+
 ## Testing and iteration
 
 We deliberately introduced shadows, bumped pieces, shook the camera, and used imperfect piece placement. I reported one incorrect move in a trial and approximately 98% move accuracy in our informal testing. The trial size and protocol are not preserved in the supplied files, so this is a project observation rather than a reproducible benchmark.
