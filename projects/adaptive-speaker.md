@@ -1,6 +1,6 @@
 # Environment-adaptive Bluetooth speaker
 
-**ECE Makerspace application design project · 2026 · Individual concept**
+**design project · 2026 · Individual concept**
 
 ![Speaker enclosure frame CAD](../assets/images/speaker-frame.png)
 
