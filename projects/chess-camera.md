@@ -36,7 +36,7 @@ The early version struggled to identify moves. We spent roughly two days adjusti
 
 ## My contribution
 
-I worked with the team on building, testing, and tuning the system. I explored the relationship between calibrated board geometry, image changes, and the prior game state. This page does not assign sole ownership of the team’s code.
+I worked with a partner on building, testing, and tuning the system. I explored the relationship between calibrated board geometry, image changes, and the prior game state. This page does not assign sole ownership of the team’s code.
 
 ## What I learned
 
@@ -49,5 +49,7 @@ I worked with the team on building, testing, and tuning the system. I explored t
 Preserve a labeled test sequence, report the number of moves and error types, and test camera shifts separately from lighting changes. Package the calibration procedure and code so another person can reproduce the result.
 
 **Available evidence:** my SPIS project description and testing account. Source code, a demo video, and evaluation logs are not included in this repository.
+
+Full project: https://github.com/apmartinez2008-bot/SPIS_final
 
 [Back to portfolio](../README.md)
