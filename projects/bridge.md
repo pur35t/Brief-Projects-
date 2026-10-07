@@ -35,7 +35,7 @@ Construction progression | Engineering notebook
 --- | ---
 [![Construction progression](../assets/images/bridge-construction.jpg)](../assets/images/bridge-construction.jpg) | [![Engineering notebook](../assets/images/bridge-notebook.jpg)](../assets/images/bridge-notebook.jpg)
 
-I would then revisit this project but with a different design consisting of 60 popsicle sticks, and it would go on to hold 70 pounds before snapping
+I would then revisit this project but with a different design consisting of 60 popsicle sticks, this time fulfilling the 24-inch requirement, and it would go on to hold 70 pounds before snapping
 
 <img width="4032" height="3024" alt="IMG_6568" src="https://github.com/user-attachments/assets/e88bdf01-7ece-4107-85e2-43d358206c70" />
 
