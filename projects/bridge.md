@@ -6,7 +6,7 @@
 
 ## Goal and constraints
 
-Build a bridge from no more than **60 popsicle sticks** that spans a **24-inch gap** and supports a hanging load. The project allowed roughly two to three weeks for research and construction.
+Build a bridge from no more than **50 popsicle sticks** that spans a **24-inch gap** and supports a hanging load. The project allowed roughly two to three weeks for research and construction.
 
 ## Build
 
@@ -14,7 +14,7 @@ I researched truss patterns and used triangular bracing to distribute load. The 
 
 ## Outcome
 
-The bridge carried a load, but I did not preserve a measured maximum in the report. It also fell approximately **four inches short** of the required span. This was a requirements failure that a dimensional check early in the build could have caught.
+The bridge carried a load, but I did not record a measured maximum in the report. It also fell approximately **four inches short** of the required span. This was a requirements failure that an early dimensional check could have caught.
 
 ## What I learned
 
