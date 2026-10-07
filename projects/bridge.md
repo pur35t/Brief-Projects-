@@ -24,6 +24,9 @@ Verify the base geometry before adding reinforcement. More bracing cannot recove
 
 This bridge is separate from the balsa tower mentioned in other project descriptions. No tower load result is attributed to this build.
 
+
+
+
 ## Visual gallery
 
 ### Construction and notebook record
@@ -31,6 +34,14 @@ This bridge is separate from the balsa tower mentioned in other project descript
 Construction progression | Engineering notebook
 --- | ---
 [![Construction progression](../assets/images/bridge-construction.jpg)](../assets/images/bridge-construction.jpg) | [![Engineering notebook](../assets/images/bridge-notebook.jpg)](../assets/images/bridge-notebook.jpg)
+
+I would then revisit this project but with a different design consisting of 60 popsicle sticks, and it would go on to hold 70 pounds before snapping
+
+<img width="4032" height="3024" alt="IMG_6568" src="https://github.com/user-attachments/assets/e88bdf01-7ece-4107-85e2-43d358206c70" />
+
+<img width="4032" height="3024" alt="IMG_6577" src="https://github.com/user-attachments/assets/ff6cd44b-79b6-4327-baef-db9f64a032e6" />
+
+
 
 Select any image to open it at full size.
 
