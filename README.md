@@ -1,4 +1,8 @@
 # Rigoberto Cortez
+
+[Visual website source](index.html) · [Website editing guide](docs/WEB_PORTFOLIO.md)
+
+The visual portfolio contains project photo galleries, CAD views, an image viewer, the existing portfolio PDF, and links to source code and project records. The HTML can be served with GitHub Pages or downloaded with the assets folder.
 ### Electrical Engineering · UC San Diego
 
 I’m a first-year electrical engineering student interested in embedded systems, computer vision, and control. I like building things that connect software to the physical world, then finding out where the design breaks.

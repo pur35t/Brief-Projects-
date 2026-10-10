@@ -1,0 +1,928 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta property="og:title" content="Rigoberto Cortez | Engineering Portfolio">
+  <meta property="og:description" content="UC San Diego Electrical Engineering. Chess camera, robotics, CAD and hands-on prototyping.">
+  <meta name="description" content="Rigoberto Cortez — UC San Diego Electrical Engineering. Embedded systems, computer vision, controls, CAD, and hardware prototyping.">
+  <title>Rigoberto Cortez | Engineering Portfolio</title>
+
+  <!--
+  ============================================================
+  EDITING GUIDE — FUTURE RIGO
+  ============================================================
+  This site is intentionally built as ONE editable HTML file.
+
+  MOST FUTURE EDITS HAPPEN IN ONE PLACE:
+    Search for: const PORTFOLIO_DATA = {
+
+  To add a new project:
+    1. Copy one project object inside PORTFOLIO_DATA.projects.
+    2. Change id/title/kicker/status/summary/tags/bullets.
+    3. Add image filenames to the images array.
+    4. Add documentation / repo / CAD links to evidence.
+    5. Set featured: true if it deserves homepage priority.
+
+  Images:
+    - Preferred path: assets/images/<filename>
+    - If that local image is missing, JavaScript automatically falls
+      back to the copy in your GitHub repository.
+    - The downloadable edition embeds every image in ASSET_MAP.
+    - The GitHub edition uses the existing assets/images folder.
+    - Place index.html at the repo root for GitHub Pages.
+
+  GitHub evidence:
+    - Every project card keeps direct links to project records/source.
+    - Clicking any gallery image opens a lightbox with an "Evidence on
+      GitHub" link so the visual portfolio stays connected to proof.
+
+  Image viewer:
+    - All photos and CAD views open at full size.
+    - Escape closes the viewer. Keyboard focus stays inside it.
+  ============================================================
+  -->
+
+  <style>
+    :root {
+      --bg:#090a0c;
+      --bg-soft:#0f1115;
+      --panel:#12151a;
+      --panel-2:#171b21;
+      --ink:#f4f5f7;
+      --muted:#a7adb7;
+      --faint:#747b86;
+      --line:#292f38;
+      --line-strong:#3a424d;
+      --accent:#c7f36f;
+      --accent-2:#75d9e6;
+      --accent-soft:#26321d;
+      --max:1240px;
+      --radius:18px;
+      --shadow:0 18px 70px rgba(0,0,0,.24);
+      --mc-grass:#78a84b;
+      --mc-grass-dark:#587d37;
+      --mc-dirt:#7a5737;
+      --mc-sand:#c5aa70;
+    }
+
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:84px; }
+    body {
+      margin:0;
+      background:
+        radial-gradient(circle at 82% 4%, rgba(117,217,230,.07), transparent 29rem),
+        radial-gradient(circle at 8% 16%, rgba(199,243,111,.055), transparent 26rem),
+        var(--bg);
+      color:var(--ink);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height:1.55;
+    }
+    a { color:inherit; text-decoration:none; }
+    button { font:inherit; }
+    img { max-width:100%; }
+    :focus-visible { outline:2px solid var(--accent); outline-offset:4px; }
+
+    .mono { font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+    .wrap { width:min(var(--max), calc(100% - 36px)); margin:auto; }
+    .muted { color:var(--muted); }
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+    .topbar {
+      position:sticky;
+      top:0;
+      z-index:40;
+      backdrop-filter:blur(18px);
+      background:rgba(9,10,12,.82);
+      border-bottom:1px solid rgba(58,66,77,.65);
+    }
+    .topbar-inner {
+      min-height:70px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+    .brand { display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:-.015em; }
+    .brand-mark {
+      width:38px; height:38px; display:grid; place-items:center;
+      border:1px solid var(--line-strong); border-radius:10px;
+      color:var(--accent); background:var(--panel);
+    }
+    .nav { display:flex; align-items:center; gap:18px; color:var(--muted); font-size:14px; }
+    .nav a:hover { color:var(--ink); }
+    .nav-cta { border:1px solid var(--line-strong); padding:8px 12px; border-radius:9px; color:var(--ink)!important; }
+
+    .hero {
+      padding:72px 0 52px;
+      display:grid;
+      grid-template-columns:minmax(0,1.06fr) minmax(390px,.94fr);
+      gap:54px;
+      align-items:center;
+    }
+    .eyebrow {
+      margin:0 0 14px;
+      color:var(--accent);
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-size:12px;
+      font-weight:700;
+    }
+    h1 {
+      margin:0;
+      font-size:clamp(44px,7.2vw,86px);
+      line-height:.97;
+      letter-spacing:-.06em;
+      font-weight:680;
+    }
+    .hero-subtitle {
+      margin:18px 0 0;
+      font-size:clamp(20px,2.5vw,29px);
+      letter-spacing:-.025em;
+      color:#d7dbe1;
+      max-width:760px;
+    }
+    .hero-copy {
+      margin:18px 0 0;
+      max-width:720px;
+      color:var(--muted);
+      font-size:17px;
+    }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:27px; }
+    .button {
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      min-height:44px; padding:10px 15px;
+      border-radius:10px; border:1px solid var(--line-strong);
+      background:var(--panel); color:var(--ink); font-weight:650; font-size:14px;
+    }
+    .button:hover { border-color:#657080; transform:translateY(-1px); }
+    .button.primary { background:var(--accent); color:#12160d; border-color:var(--accent); }
+    .button.quiet { background:transparent; }
+
+    .hero-visual {
+      border:1px solid var(--line);
+      border-radius:22px;
+      overflow:hidden;
+      background:var(--panel);
+      box-shadow:var(--shadow);
+    }
+    .hero-visual-head {
+      display:flex; justify-content:space-between; align-items:center; gap:12px;
+      padding:12px 15px; border-bottom:1px solid var(--line);
+      color:var(--faint); font-size:12px;
+    }
+    .hero-collage {
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      grid-template-rows:200px 160px;
+      gap:2px;
+      background:var(--line);
+    }
+    .hero-collage button { border:0; padding:0; overflow:hidden; background:#171a1f; cursor:zoom-in; }
+    .hero-collage button:first-child { grid-row:1 / span 2; }
+    .hero-collage img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .28s ease; }
+    .hero-collage button:hover img { transform:scale(1.025); }
+    .hero-caption { padding:14px 15px; color:var(--muted); font-size:13px; }
+
+    .proof-strip {
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:rgba(18,21,26,.7);
+    }
+    .proof-grid {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:0;
+    }
+    .proof-item { padding:22px 24px; border-right:1px solid var(--line); }
+    .proof-item:last-child { border-right:0; }
+    .proof-item strong { display:block; font-size:22px; letter-spacing:-.03em; }
+    .proof-item span { color:var(--muted); font-size:13px; }
+
+    .section { padding:72px 0; }
+    .section + .section { border-top:1px solid var(--line); }
+    .section-head {
+      display:flex; justify-content:space-between; align-items:flex-end; gap:28px;
+      margin-bottom:30px;
+    }
+    .section-head h2 { margin:0; font-size:clamp(29px,4vw,46px); letter-spacing:-.045em; line-height:1.05; }
+    .section-head p { max-width:570px; margin:0; color:var(--muted); }
+
+    .featured-stack { display:grid; gap:28px; }
+    .feature-card {
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(23,27,33,.96), rgba(16,19,24,.96));
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:0 12px 50px rgba(0,0,0,.15);
+    }
+    .feature-grid {
+      display:grid;
+      grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+      min-height:440px;
+    }
+    .feature-card:nth-child(even) .feature-copy { order:2; }
+    .feature-card:nth-child(even) .feature-media { order:1; }
+    .feature-copy { padding:34px; display:flex; flex-direction:column; }
+    .project-meta { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:14px; }
+    .status {
+      color:var(--accent); border:1px solid #455b2d; background:rgba(58,78,36,.26);
+      font-size:11px; letter-spacing:.06em; text-transform:uppercase; border-radius:999px; padding:5px 9px;
+    }
+    .project-kicker { color:var(--faint); font-size:12px; text-transform:uppercase; letter-spacing:.09em; }
+    .feature-copy h3 { margin:0; font-size:clamp(27px,3vw,40px); letter-spacing:-.04em; line-height:1.08; }
+    .summary { margin:15px 0 0; color:#d1d5db; font-size:17px; }
+    .project-bullets { margin:20px 0 0; padding:0; list-style:none; }
+    .project-bullets li { position:relative; padding-left:17px; color:var(--muted); margin:9px 0; }
+    .project-bullets li::before { content:""; width:6px; height:6px; border-radius:2px; background:var(--accent); position:absolute; left:0; top:.62em; }
+    .tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:20px; }
+    .tag { color:#bcc2cb; background:#181c22; border:1px solid var(--line); border-radius:7px; padding:5px 8px; font-size:12px; }
+    .project-links { display:flex; flex-wrap:wrap; gap:9px; margin-top:auto; padding-top:26px; }
+    .project-links a { border:1px solid var(--line-strong); border-radius:9px; padding:8px 11px; font-size:13px; font-weight:650; }
+    .project-links a:hover { border-color:var(--accent-2); color:var(--accent-2); }
+
+    .feature-media { border-left:1px solid var(--line); background:#0c0f13; min-width:0; }
+    .feature-card:nth-child(even) .feature-media { border-left:0; border-right:1px solid var(--line); }
+    .media-head { padding:12px 15px; display:flex; justify-content:space-between; gap:10px; border-bottom:1px solid var(--line); color:var(--faint); font-size:11px; }
+
+    .camera-demo { padding:22px; display:grid; grid-template-columns:minmax(230px,.9fr) minmax(210px,1fr); gap:22px; align-items:center; height:100%; }
+    .board { aspect-ratio:1; display:grid; grid-template-columns:repeat(8,1fr); width:min(100%,340px); margin:auto; border:1px solid #46503a; box-shadow:0 14px 48px rgba(0,0,0,.24); }
+    .sq { display:grid; place-items:end start; padding:2px 4px; background:#283025; color:#819076; font-size:8px; border:1px solid rgba(255,255,255,.025); }
+    .sq.alt { background:#36412e; }
+    .sq.changed { background:#6d8a3e; color:#f1ffe2; }
+    .sq.noise { background:#73512a; color:#ffe4b4; }
+    .sq.chosen { box-shadow:inset 0 0 0 2px var(--accent); }
+    .pipeline { color:#c4c9d0; font-size:13px; }
+    .pipeline-label { color:var(--faint); font-size:11px; letter-spacing:.1em; text-transform:uppercase; }
+    .pipeline-step { border-bottom:1px solid var(--line); padding:10px 0; }
+    .pipeline-output { color:var(--accent); font-size:18px; margin-top:14px; }
+    .demo-controls { display:flex; gap:8px; margin-top:16px; }
+    .small-btn { border:1px solid var(--line-strong); background:#181c22; color:var(--ink); padding:7px 10px; border-radius:8px; cursor:pointer; font-size:12px; }
+    .small-btn:hover { border-color:var(--accent); color:var(--accent); }
+    .fineprint { margin:12px 0 0; color:var(--faint); font-size:11px; }
+
+    .lead-photo { height:100%; min-height:440px; position:relative; overflow:hidden; background:#11151a; }
+    .lead-photo img { width:100%; height:100%; object-fit:cover; display:block; }
+    .lead-photo::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, transparent 58%, rgba(8,9,11,.64)); pointer-events:none; }
+    .photo-label { position:absolute; left:16px; bottom:14px; z-index:2; font-size:11px; color:#e8ebef; background:rgba(9,10,12,.76); border:1px solid rgba(255,255,255,.12); padding:6px 8px; border-radius:7px; }
+
+    .project-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px; }
+    .project-card { border:1px solid var(--line); background:var(--panel); border-radius:var(--radius); overflow:hidden; }
+    .project-card-copy { padding:26px 26px 20px; }
+    .project-card h3 { margin:0; font-size:25px; letter-spacing:-.035em; }
+    .project-card .summary { font-size:15px; }
+    .project-card .project-links { padding-top:20px; }
+
+    .gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:2px; background:var(--line); border-top:1px solid var(--line); }
+    .gallery-item { border:0; padding:0; min-height:170px; background:#111418; overflow:hidden; cursor:zoom-in; position:relative; }
+    .gallery-item img { display:block; width:100%; height:100%; min-height:170px; max-height:280px; object-fit:cover; transition:transform .25s ease; }
+    .gallery-item:hover img { transform:scale(1.022); }
+    .gallery-item::after { content:"↗"; position:absolute; right:9px; top:8px; width:27px; height:27px; display:grid; place-items:center; border-radius:7px; background:rgba(8,10,12,.72); color:white; opacity:0; transition:opacity .18s; }
+    .gallery-item:hover::after { opacity:1; }
+    .gallery-item[hidden] { display:none; }
+    .gallery-toggle { width:100%; border:0; border-top:1px solid var(--line); padding:11px 14px; background:#15191f; color:var(--muted); cursor:pointer; font-weight:650; font-size:12px; }
+    .gallery-toggle:hover { color:var(--ink); background:#191e25; }
+
+    .minecraft-stage {
+      position:relative;
+      min-height:330px;
+      overflow:hidden;
+      border-top:1px solid var(--line);
+      background-color:#eef1ec;
+      background-image:
+        linear-gradient(45deg, var(--mc-grass) 25%, transparent 25%),
+        linear-gradient(-45deg, var(--mc-grass) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, var(--mc-dirt) 75%),
+        linear-gradient(-45deg, transparent 75%, var(--mc-dirt) 75%);
+      background-size:84px 84px;
+      background-position:0 0, 0 42px, 42px -42px, -42px 0;
+    }
+    .minecraft-stage img { width:100%; height:330px; object-fit:contain; display:block; padding:18px; transition:filter .2s, mix-blend-mode .2s, background .2s; }
+    .minecraft-stage.colorized img { mix-blend-mode:multiply; filter:contrast(1.08) saturate(1.05); }
+    .minecraft-overlay {
+      position:absolute; inset:auto 14px 14px 14px; z-index:2;
+      display:flex; justify-content:space-between; align-items:center; gap:10px;
+      background:rgba(9,10,12,.82); border:1px solid rgba(255,255,255,.12); border-radius:10px; padding:9px 10px;
+      color:#e4e8ec; font-size:11px; backdrop-filter:blur(8px);
+    }
+    .minecraft-overlay button { border:1px solid #5e7542; color:#e9f7d8; background:#27331f; border-radius:7px; padding:6px 8px; cursor:pointer; }
+
+    .archive-list { display:grid; gap:12px; }
+    .archive-row {
+      border:1px solid var(--line); background:rgba(18,21,26,.74); border-radius:13px;
+      display:grid; grid-template-columns:200px minmax(0,1fr) auto; gap:20px; align-items:center; padding:13px;
+    }
+    .archive-row img { width:200px; height:112px; object-fit:cover; border-radius:8px; display:block; background:#14181e; }
+    .archive-row h3 { margin:0 0 5px; font-size:18px; }
+    .archive-row p { margin:0; color:var(--muted); font-size:13px; }
+    .archive-row a { font-size:13px; font-weight:650; color:var(--accent-2); padding:8px; }
+
+    .evidence-panel {
+      border:1px solid var(--line); border-radius:var(--radius); background:linear-gradient(120deg,#15191f,#111419); padding:30px;
+      display:grid; grid-template-columns:1fr auto; gap:28px; align-items:center;
+    }
+    .evidence-panel h3 { margin:0; font-size:27px; letter-spacing:-.035em; }
+    .evidence-panel p { color:var(--muted); max-width:760px; margin:10px 0 0; }
+    .evidence-actions { display:flex; flex-wrap:wrap; gap:9px; justify-content:flex-end; }
+
+    .stack-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .stack-card { border:1px solid var(--line); background:var(--panel); border-radius:14px; padding:22px; }
+    .stack-card h3 { margin:0 0 10px; font-size:16px; }
+    .stack-card p { margin:0; color:var(--muted); font-size:14px; }
+
+    footer { border-top:1px solid var(--line); padding:30px 0 42px; color:var(--muted); font-size:13px; }
+    .footer-inner { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+
+    .lightbox {
+      position:fixed; inset:0; z-index:100; background:rgba(2,3,4,.92); backdrop-filter:blur(12px);
+      display:none; place-items:center; padding:22px;
+    }
+    .lightbox.open { display:grid; }
+    .lightbox-card { width:min(1120px,100%); max-height:92vh; display:grid; grid-template-rows:minmax(0,1fr) auto; border:1px solid var(--line-strong); border-radius:16px; overflow:hidden; background:#0d1014; box-shadow:0 24px 100px rgba(0,0,0,.5); }
+    .lightbox-media { min-height:0; display:grid; place-items:center; background:#0a0c0f; }
+    .lightbox-media img { max-width:100%; max-height:76vh; object-fit:contain; display:block; }
+    .lightbox-foot { display:flex; justify-content:space-between; gap:18px; align-items:center; padding:12px 14px; border-top:1px solid var(--line); }
+    .lightbox-foot span { color:var(--muted); font-size:12px; }
+    .lightbox-actions { display:flex; gap:8px; align-items:center; }
+    .lightbox-actions a, .lightbox-actions button { border:1px solid var(--line-strong); background:#171b20; color:var(--ink); border-radius:8px; padding:7px 9px; font-size:12px; cursor:pointer; }
+
+    @media (max-width:1000px) {
+      .hero { grid-template-columns:1fr; gap:30px; }
+      .hero-visual { max-width:720px; }
+      .feature-grid { grid-template-columns:1fr; }
+      .feature-card:nth-child(even) .feature-copy, .feature-card:nth-child(even) .feature-media { order:initial; }
+      .feature-media, .feature-card:nth-child(even) .feature-media { border-left:0; border-right:0; border-top:1px solid var(--line); }
+      .lead-photo { min-height:360px; }
+      .project-grid { grid-template-columns:1fr; }
+      .proof-grid { grid-template-columns:repeat(2,1fr); }
+      .proof-item:nth-child(2) { border-right:0; }
+      .proof-item:nth-child(-n+2) { border-bottom:1px solid var(--line); }
+      .stack-grid { grid-template-columns:1fr; }
+      .evidence-panel { grid-template-columns:1fr; }
+      .evidence-actions { justify-content:flex-start; }
+    }
+    @media (max-width:700px) {
+      .wrap { width:min(var(--max), calc(100% - 26px)); }
+      .topbar-inner { min-height:62px; }
+      .brand-text { display:none; }
+      .nav a:nth-child(1), .nav a:nth-child(2) { display:none; }
+      .hero { padding-top:46px; }
+      .hero-collage { grid-template-columns:1fr 1fr; grid-template-rows:210px 125px; }
+      .hero-collage button:first-child { grid-column:1/-1; grid-row:auto; }
+      .proof-grid { grid-template-columns:1fr 1fr; }
+      .proof-item { padding:17px 15px; }
+      .section { padding:54px 0; }
+      .section-head { display:block; }
+      .section-head p { margin-top:12px; }
+      .feature-copy { padding:24px; }
+      .camera-demo { grid-template-columns:1fr; }
+      .board { max-width:300px; }
+      .gallery-item { min-height:135px; }
+      .gallery-item img { min-height:135px; }
+      .archive-row { grid-template-columns:92px minmax(0,1fr); gap:12px; }
+      .archive-row img { width:92px; height:78px; }
+      .archive-row > a { grid-column:2; padding:0; }
+      .minecraft-stage, .minecraft-stage img { min-height:270px; height:270px; }
+      .lightbox-foot { align-items:flex-start; flex-direction:column; }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      html { scroll-behavior:auto; }
+      *, *::before, *::after { transition:none!important; animation:none!important; }
+    }
+
+    .name-dot{color:var(--accent)}
+    h1{font-size:clamp(54px,7.5vw,104px);line-height:1.02;letter-spacing:-.065em}
+    .skip-link{position:fixed;top:-100px;left:20px;z-index:200;background:var(--accent);color:#080b08;padding:12px 20px;border-radius:8px}.skip-link:focus{top:12px}
+    .project-jumps{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 28px}.project-jumps a{padding:8px 14px;border:1px solid var(--line-strong);border-radius:999px;color:var(--muted);font-size:13px}.project-jumps a:hover{color:var(--accent);border-color:var(--accent)}
+    .technical-notes{margin:18px 0;color:var(--muted);font-size:14px}.technical-notes summary,.pipeline-details summary{cursor:pointer;color:var(--ink);padding:9px 0}.technical-notes summary:hover,.pipeline-details summary:hover{color:var(--accent)}
+    .video-preview{min-height:285px;display:grid;place-items:center;background:radial-gradient(ellipse at 90% 5%,#283e30,transparent 70%),#0c1412;text-align:center;padding:24px;aspect-ratio:16/9}.video-copy{max-width:340px}.video-icon{font-size:32px;color:var(--accent);display:block;margin:0 0 14px}.video-copy strong{font-size:23px;display:block}.video-copy p{color:var(--muted);font-size:14px;margin:10px 0 20px}.video-copy a{display:inline-block;font-size:12px;color:var(--accent-2);margin-left:16px}.video-preview:has(iframe){padding:0}.video-preview iframe{border:0;width:100%;height:100%;aspect-ratio:16/9;min-height:285px}
+    .pipeline-details{padding:12px 22px;border-top:1px solid var(--line);font-size:13px}.pipeline-details .camera-demo{padding:20px 0}.pipeline-details:not([open]) .camera-demo{display:none}
+    .support-lead{order:-1;border-bottom:1px solid var(--line)}.support-lead button{display:block;width:100%;border:0;padding:0;cursor:zoom-in;background:#e3e7e9}.support-lead img{display:block;max-height:270px;min-height:230px;width:100%;object-fit:contain}
+    .project-card{display:flex;flex-direction:column}.gallery-item img{object-fit:contain;background:#e5e7e8}.hero-collage button img{object-fit:cover}.hero-collage button:not(:first-child) img{object-fit:contain;background:#e6e8e9}
+    .minecraft-stage,.minecraft-stage img{background:#e4e6e8;object-fit:contain}.minecraft-overlay{justify-content:center}
+    .feature-copy{align-self:center}.feature-copy h3{font-size:clamp(26px,3vw,38px)}.project-kicker{font-size:11px}
+    .feature-card{scroll-margin-top:96px}.project-card{scroll-margin-top:96px}
+    :focus-visible{outline:2px solid var(--accent);outline-offset:5px}
+    @media(max-width:700px){.video-preview{min-height:230px}.video-preview iframe{min-height:230px}.project-jumps{gap:6px}.project-jumps a{font-size:12px;padding:7px 11px}.nav{gap:12px}.nav a{font-size:13px}.hero-copy{font-size:15px}}
+
+    .hero-collage{grid-template-columns:1fr 1fr;grid-template-rows:250px 135px}.hero-collage button:first-child{grid-row:auto;grid-column:1/-1}
+    .archive-entry{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel)}.archive-entry .archive-row{border:0}.archive-entry>details{padding:0 15px 15px;color:var(--muted);font-size:13px}.archive-entry>details summary{cursor:pointer;padding:8px 0}.archive-entry .gallery{padding:10px 0 0}
+    @media(max-width:700px){.hero-collage{grid-template-rows:210px 125px}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#featured">Skip to projects</a>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top" aria-label="Rigoberto Cortez portfolio home">
+        <span class="brand-mark mono">RC</span>
+        <span class="brand-text">Rigoberto Cortez</span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#featured">Featured work</a>
+        <a href="#more-work">Design & CAD</a>
+        <a href="https://github.com/pur35t/Brief-Projects-" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="nav-cta" href="mailto:rcortezcadenas@ucsd.edu">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="wrap hero">
+      <div>
+        <p class="eyebrow mono">Electrical Engineering · UC San Diego</p>
+        <h1>Rigoberto<br>Cortez<span class="name-dot">.</span></h1>
+        <p class="hero-subtitle">Electrical Engineering student building systems that sense the physical world.</p>
+        <p class="hero-copy">From a chess camera that interprets noisy board changes to a tracked robot with real sensors and wiring, I learn by building, testing, and refining. Explore the work below, then follow the code and design records on GitHub.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#featured">See selected projects</a>
+          <a class="button" href="https://github.com/pur35t/Brief-Projects-" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a class="button quiet" href="presentation/Rigoberto_Cortez_Portfolio.pdf" target="_blank" rel="noopener noreferrer">Portfolio PDF ↗</a>
+        </div>
+      </div>
+
+      <aside class="hero-visual" aria-label="Project image collage">
+        <div class="hero-visual-head mono"><span>ON THE WORKBENCH</span><span>CLICK TO INSPECT</span></div>
+        <div class="hero-collage" id="hero-collage"></div><noscript><img src="assets/images/agv-integrated.jpg" alt="Integrated tracked robot" style="width:100%"></noscript>
+        <div class="hero-caption">The tracked robot, Minecraft chess assembly, and fitted container. Select a photo to see the full image.</div>
+      </aside>
+    </section>
+
+    <section class="proof-strip" aria-label="Portfolio highlights">
+      <div class="wrap proof-grid">
+        <div class="proof-item"><strong>~98%</strong><span>informal chess move detection result</span></div>
+        <div class="proof-item"><strong>64</strong><span>individually calibrated chessboard regions</span></div>
+        <div class="proof-item"><strong>3</strong><span>personally credited Minecraft CAD pieces</span></div>
+        <div class="proof-item"><strong>40+</strong><span>build photos, CAD views, and drawings</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="featured">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow mono">01 / Selected projects</p>
+            <h2>Featured engineering work</h2>
+          </div>
+          <p>Computer vision, physical robotics, and CAD. Each project includes its role, current status, and links to the technical work.</p>
+        </div>
+        <nav class="project-jumps" aria-label="Jump to a project"><a href="#camera">Chess camera</a><a href="#robot">Tracked robot</a><a href="#minecraft">Minecraft CAD</a><a href="#container">CAM studies</a><a href="#speaker">Speaker design</a></nav><div class="featured-stack" id="featured-projects"></div><noscript><p>Read <a href="https://github.com/pur35t/Brief-Projects-/tree/main/projects">the project records on GitHub</a>.</p></noscript>
+      </div>
+    </section>
+
+    <section class="section" id="more-work">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow mono">02 / Design + fabrication</p>
+            <h2>Design & fabrication</h2>
+          </div>
+          <p>A closer look at fitted parts, machining simulations, and enclosure design. Open the galleries for sketches and engineering drawings.</p>
+        </div>
+        <div class="project-grid" id="project-grid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="archive">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow mono">03 / Earlier work</p>
+            <h2>Build archive</h2>
+          </div>
+          <p>Earlier structural work and a shared CAD archive, including the lessons that shaped later projects.</p>
+        </div>
+        <div class="archive-list" id="archive-list"></div>
+      </div>
+    </section>
+
+    <section class="section" id="evidence">
+      <div class="wrap">
+        <div class="evidence-panel">
+          <div>
+            <p class="eyebrow mono">Engineering notebook</p>
+            <h3>Follow the work behind the photos.</h3>
+            <p>Browse project write-ups, source code, original drawings, and downloadable CAD files. The records explain the design decisions and what I would improve next.</p>
+          </div>
+          <div class="evidence-actions">
+            <a class="button primary" href="https://github.com/pur35t/Brief-Projects-" target="_blank" rel="noopener noreferrer">Read the project records ↗</a>
+            <a class="button" href="https://github.com/pur35t/Brief-Projects-/tree/main/assets" target="_blank" rel="noopener noreferrer">CAD & source images ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="stack">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow mono">04 / Technical range</p>
+            <h2>Current stack</h2>
+          </div>
+        </div>
+        <div class="stack-grid">
+          <div class="stack-card"><h3>Embedded / sensing</h3><p>Raspberry Pi, Picamera2, light sensors, DC and servo motors, sensor calibration, soldering.</p></div>
+          <div class="stack-card"><h3>Programming</h3><p>Python, OpenCV, NumPy, python-chess, RobotC. Building deeper C and microcontroller skills.</p></div>
+          <div class="stack-card"><h3>CAD / fabrication</h3><p>Autodesk Inventor, parametric modeling, assemblies, CAM toolpaths, CNC workflow, 3D printing, laser cutting.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>Rigoberto Cortez · UC San Diego Electrical Engineering</span>
+      <span class="mono">B.S. Electrical Engineering · Expected 2030</span>
+      <a href="mailto:rcortezcadenas@ucsd.edu">rcortezcadenas@ucsd.edu</a>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="lightbox-caption">
+    <div class="lightbox-card">
+      <div class="lightbox-media"><img id="lightbox-image" alt=""></div>
+      <div class="lightbox-foot">
+        <span id="lightbox-caption"></span>
+        <div class="lightbox-actions">
+          <a id="lightbox-source" href="#" target="_blank" rel="noopener noreferrer">Evidence on GitHub ↗</a>
+          <button type="button" id="lightbox-close">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  'use strict';
+
+  const REPO = 'https://github.com/pur35t/Brief-Projects-';
+  const BLOB = REPO + '/blob/main/';
+  const RAW = 'https://raw.githubusercontent.com/pur35t/Brief-Projects-/main/';
+
+  // ============================================================
+  // EDIT HERE: portfolio content, links, images, project order.
+  // ============================================================
+  const PORTFOLIO_DATA = {
+    heroImages: [
+      {file:'assets/images/agv-integrated.jpg', alt:'Integrated VEX tracked robot with sensors and wiring'},
+      {file:'assets/images/chess-assembly.png', alt:'Minecraft-themed chess set team assembly drawing'},
+      {file:'assets/images/container-assembly.png', alt:'Star container base and lid CAD assembly'}
+    ],
+    projects: [
+      {
+        id:'camera', featured:true, media:'camera',
+        kicker:'Computer vision · embedded systems · team project',
+        status:'Working SPIS project',
+        title:'Chess Logging Camera',
+        summary:'A Raspberry Pi camera system that turns noisy physical-board observations into legal chess moves and a digital game record.',
+        tags:['Python','Raspberry Pi','Picamera2','OpenCV','NumPy','python-chess'],
+        bullets:[
+          'Used event-triggered before/after frames and 64 individually calibrated board regions instead of requiring a training dataset.',
+          'Combined visual changes with the previous board state and legal-move constraints to reject noise from shadows, vibration, and imperfect placement.',
+          'Reported approximately 98% move-detection accuracy in informal stress testing; the repository labels this as a project observation rather than a reproducible benchmark.'
+        ],
+        evidence:[
+          {label:'Portfolio documentation', url:BLOB+'projects/chess-camera.md'},
+          {label:'Watch project video ↗', url:'https://www.youtube.com/watch?v=CqR65Nzltz0'},
+          {label:'Team source code ↗', url:'https://github.com/apmartinez2008-bot/SPIS_final'}
+        ]
+      },
+      {
+        id:'robot', featured:true, media:'lead-photo', lead:'assets/images/agv-integrated.jpg',
+        kicker:'Robotics · sensing · physical integration',
+        status:'Physical team prototype',
+        title:'VEX Tracked Line-Following Robot',
+        summary:'A tracked automated guided vehicle integrating line sensors, motors, drivetrain hardware, obstacle sensing, and RobotC coursework.',
+        tags:['VEX Cortex','RobotC','IR Sensors','Ultrasonic','Motor Control'],
+        bullets:[
+          'Built and integrated the physical tracked vehicle around three line sensors, VEX motors, geared drivetrain, battery, and wiring constraints.',
+          'Built the physical prototype with the team. The archived report records unfinished control software; route performance is not independently documented.',
+          'Practiced sensor placement, drivetrain integration, and the transition from a simple chassis to a wired system.'
+        ],
+        images:[
+          'assets/images/agv-integrated.jpg','assets/images/agv-front.jpg','assets/images/agv-drivetrain.jpg','assets/images/agv-assembly-stage.jpg','assets/images/agv-side.jpg','assets/images/agv-sensors.jpg','assets/images/agv-sketch.jpg','assets/images/agv-code.jpg','assets/images/agv-configuration.jpg','assets/images/agv-code-detail.jpg'
+        ],
+        evidence:[
+          {label:'Project documentation', url:BLOB+'projects/tracked-robot.md'},
+          {label:'Robot image evidence', url:REPO+'/tree/main/assets/images'}
+        ]
+      },
+      {
+        id:'minecraft', featured:true, media:'minecraft',
+        kicker:'CAD · engineering drawings · 3D-printable geometry',
+        status:'3 personally credited designs',
+        title:'Minecraft-Themed Chess Set',
+        summary:'Parametric chess-piece CAD created inside a shared team set, with drawings and exportable STEP/STL geometry preserved as evidence.',
+        tags:['Autodesk Inventor','Parametric CAD','STEP','STL','Engineering Drawings'],
+        bullets:[
+          'Designed the Knight, Steve piece, and Wolf Bishop; drawing title blocks identify my contribution.',
+          'Debugged sketch-plane, extrusion, and geometry issues while coordinating pieces inside a shared assembly.',
+          'Coordinated my parts with the team assembly and preserved the original dimensional drawings.'
+        ],
+        images:[
+          'assets/images/chess-assembly.png','assets/images/chess-knight-iso.jpg','assets/images/chess-knight-front.jpg','assets/images/chess-knight-side.jpg','assets/images/chess-knight-drawing.png','assets/images/chess-steve-iso.jpg','assets/images/chess-steve-front.jpg','assets/images/chess-steve-side.jpg','assets/images/chess-steve-drawing.png','assets/images/chess-wolf-bishop-iso.jpg','assets/images/chess-wolf-bishop-front.jpg','assets/images/chess-wolf-bishop-side.jpg','assets/images/chess-bishop-drawing.png'
+        ],
+        evidence:[
+          {label:'Project documentation', url:BLOB+'projects/minecraft-chess.md'},
+          {label:'CAD source files', url:REPO+'/tree/main/assets/cad'},
+          {label:'STL source files', url:REPO+'/tree/main/assets/stl'}
+        ]
+      },
+      {
+        id:'container', featured:false,
+        kicker:'CAD · CAM · manufacturing workflow',
+        status:'CAD + CAM simulation',
+        title:'Star Container & CAM Studies',
+        summary:'Fitted-part CAD paired with pocketing, contouring, drilling, and surface-machining documentation.',
+        tags:['Autodesk Inventor','CAM','2D Pocket','2D Contour','Manufacturability'],
+        bullets:[
+          'Modeled a fitted star-shaped base and lid and documented the geometry with sketches and dimensions.',
+          'Prepared and reviewed pocket, contour, drilling, and surface-machining strategies in CAM simulation.',
+          'Current evidence documents CAD and CAM simulation; a finished machined part is the next validation step.'
+        ],
+        images:[
+          'assets/images/container-assembly.png','assets/images/container-toolpath.png','assets/images/container-base-iso.jpg','assets/images/container-lid-iso.jpg','assets/images/container-base-front.jpg','assets/images/container-lid-front.jpg','assets/images/container-base.png','assets/images/container-lid.png','assets/images/container-dimensions.png','assets/images/container-side-dimensions.png','assets/images/container-fit-sketch.jpg','assets/images/container-sketch.jpg','assets/images/container-lid-toolpath.png','assets/images/cam-drilling.png','assets/images/cam-pocket-simulation.png','assets/images/cam-surface.png','assets/images/cam-complex-surface.png'
+        ],
+        evidence:[
+          {label:'Project documentation', url:BLOB+'projects/container-cam.md'},
+          {label:'Base STEP', url:BLOB+'assets/cad/container-base.step'},
+          {label:'Lid STEP', url:BLOB+'assets/cad/container-lid.step'}
+        ]
+      },
+      {
+        id:'speaker', featured:false,
+        kicker:'System design · sensing · enclosure CAD',
+        status:'Design proposal',
+        title:'Environment-Adaptive Bluetooth Speaker',
+        summary:'A four-face speaker concept pairing enclosure CAD with directional distance sensing and a proposed adaptive audio architecture.',
+        tags:['CAD','ToF Sensors','ESP32 Concept','Audio Architecture','Fabrication Planning'],
+        bullets:[
+          'Modeled the truncated-pyramid frame, internal posts, fastener locations, and service-access concept.',
+          'Proposed four directional distance sensors feeding a microcontroller that can request per-face output changes.',
+          'The documentation explicitly flags the unresolved four-channel amplifier/control architecture before any physical build.'
+        ],
+        images:['assets/images/speaker-frame.png','assets/images/speaker-underside.png','assets/images/speaker-sketch.jpg'],
+        evidence:[
+          {label:'Project documentation', url:BLOB+'projects/adaptive-speaker.md'},
+          {label:'Design proposal PDF', url:BLOB+'assets/documents/speaker-design-proposal.pdf'}
+        ]
+      },
+      {
+        id:'marble', featured:false, noGallery:true,
+        kicker:'Sensors · servo control · classification',
+        status:'Physical project · documentation to add',
+        title:'Autonomous Marble Sorter',
+        summary:'A sensor-driven sorter for wood, glass, metal, and rubber marbles using calibrated thresholds and a servo-actuated diverter.',
+        tags:['Light Sensors','Servo Control','Calibration','Electromechanical Systems'],
+        bullets:[
+          'Built a sensing-and-diverter workflow that classified four marble materials using calibrated light-sensor thresholds.',
+          'Used a servo mechanism to route classified marbles into four collection bins.',
+          'Build photos and calibration records are still to be added to the project archive.'
+        ],
+        evidence:[]
+      }
+    ],
+    archive:[
+      {
+        title:'Bridge build + second iteration',
+        image:'assets/images/bridge-build.jpg',
+        images:['assets/images/bridge-construction.jpg','assets/images/bridge-notebook.jpg','assets/images/bridge-sketch.jpg'],
+        summary:'Earlier structural build preserved as process evidence. The project record also contains photos from a later 60-stick iteration.',
+        url:BLOB+'projects/bridge.md'
+      },
+      {
+        title:'Chest cooler team CAD archive',
+        image:'assets/images/cooler-team-assembly-iso.jpg',
+        images:['assets/images/cooler-team-assembly-front.jpg'],
+        summary:'Team CAD context kept in the archive because the supplied files do not establish my specific geometry well enough to feature it.',
+        url:BLOB+'projects/chest-cooler.md'
+      }
+    ]
+  };
+
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const ASSET_MAP = {}; // The downloadable edition embeds its images here.
+  const isAbsolute = p => /^https?:\/\//i.test(p);
+  const localSrc = p => ASSET_MAP[p] || p;
+  const githubForImage = p => isAbsolute(p) ? p : BLOB + p;
+
+  function imageTag(path, alt, cls='') {
+    return `<img class="${cls}" src="${esc(localSrc(path))}" data-fallback="${esc(isAbsolute(path)?'':RAW+path)}" data-evidence="${esc(githubForImage(path))}" alt="${esc(alt)}" loading="lazy">`;
+  }
+
+  function bindFallbacks(root=document) {
+    root.querySelectorAll('img[data-fallback]').forEach(img => {
+      if (img.dataset.boundFallback) return;
+      img.dataset.boundFallback = '1';
+      img.addEventListener('error', () => {
+        const fallback = img.dataset.fallback;
+        if (fallback && img.src !== fallback) {
+          img.removeAttribute('data-fallback');
+          img.src = fallback;
+        }
+      });
+    });
+  }
+
+  function heroCollage() {
+    const el = document.getElementById('hero-collage');
+    el.innerHTML = PORTFOLIO_DATA.heroImages.map(item => `
+      <button type="button" class="js-lightbox" data-caption="${esc(item.alt)}" data-source="${esc(githubForImage(item.file))}">
+        ${imageTag(item.file,item.alt)}
+      </button>`).join('');
+  }
+
+  function boardMarkup() {
+    let html='';
+    for(let r=0;r<8;r++) for(let c=0;c<8;c++) {
+      const name=String.fromCharCode(97+c)+(8-r);
+      html += `<span class="sq${(r+c)%2?' alt':''}" data-square="${name}">${name}</span>`;
+    }
+    return html;
+  }
+
+  function cameraMedia() {
+    return `<div class="media-head mono"><span>CHESS CAMERA</span><span>SPIS 2026 / TEAM PROJECT</span></div>
+      <div class="video-preview"><div class="video-copy"><span class="video-icon" aria-hidden="true">▶</span><strong>The system in action</strong><p>See the physical board and move-tracking demonstration.</p><button type="button" class="small-btn" data-load-video>Play project video</button><a href="https://www.youtube.com/watch?v=CqR65Nzltz0" target="_blank" rel="noopener noreferrer">Open on YouTube ↗</a></div></div>
+      <details class="pipeline-details"><summary>Explore how a noisy move becomes Nf3</summary>
+      <div class="camera-demo">
+        <div class="board" id="camera-board" aria-label="Illustrative 64-region chessboard calibration grid">${boardMarkup()}</div>
+        <div class="pipeline mono">
+          <div class="pipeline-label">Event-triggered pipeline</div>
+          <div class="pipeline-step">frame_before → frame_after</div>
+          <div class="pipeline-step">64 calibrated regions → observed changes</div>
+          <div class="pipeline-step" id="camera-changes">Δ squares = { }</div>
+          <div class="pipeline-step">previous state + legal moves → ranked candidate</div>
+          <div class="pipeline-output" id="camera-output">Awaiting replay</div>
+          <div class="demo-controls"><button type="button" class="small-btn" data-camera="replay">Replay noisy move</button><button type="button" class="small-btn" data-camera="reset">Reset</button></div>
+          <p class="fineprint">Illustrative pipeline replay. The ~98% result comes from informal team testing.</p>
+        </div>
+      </div></details>`;
+  }
+
+  function leadPhotoMedia(project) {
+    return `<div class="media-head mono"><span>BUILD EVIDENCE</span><span>PHYSICAL PROTOTYPE</span></div>
+      <button type="button" class="lead-photo js-lightbox" data-caption="${esc(project.title+' — integrated build')}" data-source="${esc(githubForImage(project.lead))}" style="border:0;padding:0;width:100%;cursor:zoom-in">
+        ${imageTag(project.lead, project.title+' integrated build')}
+        <span class="photo-label mono">Open source image ↗</span>
+      </button>`;
+  }
+
+  function minecraftMedia(project) {
+    const assembly = project.images[0];
+    return `<div class="media-head mono"><span>TEAM ASSEMBLY</span><span>ORIGINAL CAD DRAWING</span></div>
+      <div class="minecraft-stage" id="minecraft-stage">
+        <button type="button" class="js-lightbox" data-caption="Minecraft chess team assembly — original engineering drawing" data-source="${esc(githubForImage(assembly))}" style="border:0;padding:0;background:transparent;width:100%;cursor:zoom-in">
+          ${imageTag(assembly,'Minecraft-themed chess set team assembly')}
+        </button>
+        <div class="minecraft-overlay"><span>My pieces: Knight, Steve, and Wolf Bishop.</span></div>
+      </div>`;
+  }
+
+  function links(project) {
+    if (!project.evidence || !project.evidence.length) return `<span class="muted" style="font-size:12px">GitHub evidence not added yet.</span>`;
+    return project.evidence.map((e,i)=>`<a href="${esc(e.url)}" target="_blank" rel="noopener noreferrer">${esc(e.label)}${i===0?' ↗':''}</a>`).join('');
+  }
+
+  function featureCard(project) {
+    let media = project.media==='camera' ? cameraMedia() : project.media==='minecraft' ? minecraftMedia(project) : leadPhotoMedia(project);
+    return `<article class="feature-card" id="${esc(project.id)}">
+      <div class="feature-grid">
+        <div class="feature-copy">
+          <div class="project-meta"><span class="status">${esc(project.status)}</span><span class="project-kicker mono">${esc(project.kicker)}</span></div>
+          <h3>${esc(project.title)}</h3>
+          <p class="summary">${esc(project.summary)}</p>
+          <details class="technical-notes"><summary>Design decisions & results</summary><ul class="project-bullets">${project.bullets.map(b=>`<li>${esc(b)}</li>`).join('')}</ul></details>
+          <div class="tags">${project.tags.map(t=>`<span class="tag mono">${esc(t)}</span>`).join('')}</div>
+          <div class="project-links">${links(project)}</div>
+        </div>
+        <div class="feature-media">${media}</div>
+      </div>
+      ${project.images && project.id!=='minecraft' ? galleryMarkup(project) : project.id==='minecraft' ? galleryMarkup({...project,images:project.images.slice(1)}) : ''}
+    </article>`;
+  }
+
+  function galleryMarkup(project) {
+    if (!project.images || !project.images.length) return '';
+    const shown=4;
+    const items=project.images.map((path,i)=>{
+      const filename=path.split('/').pop().replace(/[-_]/g,' ').replace(/\.[^.]+$/,'');
+      const caption=`${project.title} — ${filename}`;
+      return `<button type="button" class="gallery-item js-lightbox" ${i>=shown?'hidden data-gallery-extra="1"':''} data-caption="${esc(caption)}" data-source="${esc(githubForImage(path))}">${imageTag(path,caption)}</button>`;
+    }).join('');
+    const toggle=project.images.length>shown ? `<button type="button" class="gallery-toggle" data-expand-gallery>Show all ${project.images.length} source images</button>` : '';
+    return `<div class="gallery" data-gallery>${items}</div>${toggle}`;
+  }
+
+  function projectCard(project) {
+    return `<article class="project-card" id="${esc(project.id)}">
+      <div class="project-card-copy">
+        <div class="project-meta"><span class="status">${esc(project.status)}</span><span class="project-kicker mono">${esc(project.kicker)}</span></div>
+        <h3>${esc(project.title)}</h3>
+        <p class="summary">${esc(project.summary)}</p>
+        <details class="technical-notes"><summary>Design decisions & results</summary><ul class="project-bullets">${project.bullets.map(b=>`<li>${esc(b)}</li>`).join('')}</ul></details>
+        <div class="tags">${project.tags.map(t=>`<span class="tag mono">${esc(t)}</span>`).join('')}</div>
+        <div class="project-links">${links(project)}</div>
+      </div>
+      ${project.noGallery ? '' : `<div class="support-lead"><button class="js-lightbox" type="button" data-caption="${esc(project.title)}" data-source="${esc(githubForImage(project.images[0]))}">${imageTag(project.images[0],project.title)}</button></div>` + galleryMarkup({...project,images:project.images.slice(1)})}
+    </article>`;
+  }
+
+  function renderProjects() {
+    document.getElementById('featured-projects').innerHTML = PORTFOLIO_DATA.projects.filter(p=>p.featured).map(featureCard).join('');
+    document.getElementById('project-grid').innerHTML = PORTFOLIO_DATA.projects.filter(p=>!p.featured).map(projectCard).join('');
+    document.getElementById('archive-list').innerHTML = PORTFOLIO_DATA.archive.map(item=>`<div class="archive-entry"><article class="archive-row">
+      <button type="button" class="js-lightbox" data-caption="${esc(item.title)}" data-source="${esc(githubForImage(item.image))}" style="border:0;padding:0;background:transparent;cursor:zoom-in">${imageTag(item.image,item.title)}</button>
+      <div><h3>${esc(item.title)}</h3><p>${esc(item.summary)}</p></div>
+      <a href="${esc(item.url)}" target="_blank" rel="noopener noreferrer">Documentation ↗</a>
+    </article><details><summary>More photos & drawings</summary>${galleryMarkup({title:item.title,images:item.images})}</details></div>`).join('');
+  }
+
+  function setupCamera() {
+    const board=document.getElementById('camera-board');
+    if (!board) return;
+    let timers=[];
+    const reset=()=>{
+      timers.forEach(clearTimeout); timers=[];
+      board.querySelectorAll('.sq').forEach(s=>s.classList.remove('changed','noise','chosen'));
+      document.getElementById('camera-changes').textContent='Δ squares = { }';
+      document.getElementById('camera-output').textContent='Awaiting replay';
+    };
+    const observe=()=>{
+      ['g1','f3'].forEach(id=>board.querySelector(`[data-square="${id}"]`).classList.add('changed'));
+      board.querySelector('[data-square="g2"]').classList.add('noise');
+      document.getElementById('camera-changes').textContent='Δ squares = {g1, f3, g2}';
+      document.getElementById('camera-output').textContent='Ranking legal candidates…';
+    };
+    const resolve=()=>{
+      ['g1','f3'].forEach(id=>board.querySelector(`[data-square="${id}"]`).classList.add('chosen'));
+      document.getElementById('camera-output').textContent='g1 → f3 / PGN: Nf3';
+    };
+    document.addEventListener('click',e=>{
+      const b=e.target.closest('[data-camera]'); if(!b) return;
+      if(b.dataset.camera==='reset') reset();
+      if(b.dataset.camera==='replay') { reset(); observe(); timers.push(setTimeout(resolve,850)); }
+    });
+  }
+
+  function setupGalleries() {
+    document.addEventListener('click',e=>{
+      const btn=e.target.closest('[data-expand-gallery]');
+      if(!btn) return;
+      const gallery=btn.previousElementSibling;
+      const extras=[...gallery.querySelectorAll('[data-gallery-extra]')];
+      const opening=extras.some(x=>x.hidden);
+      extras.forEach(x=>x.hidden=!opening);
+      btn.textContent=opening?'Show fewer images':`Show all ${gallery.querySelectorAll('.gallery-item').length} source images`;
+    });
+  }
+
+  function setupMinecraft() {
+    const stage=document.getElementById('minecraft-stage');
+    const toggle=document.getElementById('minecraft-toggle');
+    if(!stage||!toggle) return;
+    toggle.addEventListener('click',()=>{
+      const on=stage.classList.toggle('colorized');
+      toggle.textContent=on?'Show source view':'Add Minecraft color';
+    });
+  }
+
+  function setupLightbox() {
+    const box=document.getElementById('lightbox');
+    const img=document.getElementById('lightbox-image');
+    const caption=document.getElementById('lightbox-caption');
+    const source=document.getElementById('lightbox-source');
+    const close=document.getElementById('lightbox-close');
+    let previous=null;
+    const shut=()=>{ document.body.style.overflow=''; box.classList.remove('open'); box.setAttribute('aria-hidden','true'); img.src=''; previous?.focus?.(); };
+    document.addEventListener('click',e=>{
+      const trigger=e.target.closest('.js-lightbox');
+      if(!trigger) return;
+      previous=trigger;
+      const inner=trigger.querySelector('img');
+      if(!inner) return;
+      img.src=inner.currentSrc||inner.src;
+      img.alt=inner.alt||'';
+      caption.textContent=trigger.dataset.caption||inner.alt||'Project evidence';
+      source.href=trigger.dataset.source||inner.dataset.evidence||'#';
+      box.classList.add('open'); box.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; close.focus();
+    });
+    close.addEventListener('click',shut);
+    box.addEventListener('click',e=>{ if(e.target===box) shut(); });
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&box.classList.contains('open')) shut(); if(e.key==='Tab'&&box.classList.contains('open')){if(e.shiftKey&&document.activeElement===source){e.preventDefault();close.focus();}else if(!e.shiftKey&&document.activeElement===close){e.preventDefault();source.focus();}} });
+  }
+
+  document.addEventListener('click', e => {
+    const trigger=e.target.closest('[data-load-video]'); if(!trigger) return;
+    const preview=trigger.closest('.video-preview');
+    preview.innerHTML='<iframe src="https://www.youtube.com/embed/CqR65Nzltz0?autoplay=1" title="SPIS chess logging camera demonstration" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';
+  });
+  heroCollage();
+  renderProjects();
+  bindFallbacks();
+  setupCamera();
+  setupGalleries();
+  setupMinecraft();
+  setupLightbox();
+  </script>
+</body>
+</html>
