@@ -1,7 +1,7 @@
 # Rigoberto Cortez
 ### Electrical Engineering · UC San Diego
 
-About me: After working in agriculture for several summers, I've developed an appreciation for equipment and systems that stay dependable under difficult conditions. That perspective carries into my engineering projects, where I push designs to their limits, identify weaknesses, and find ways to make them more resilient. I'm particularly interested in applying this mindset to embedded systems, robotics, and electrical infrastructure.
+About me: After working in agriculture for several summers, I've developed a fond appreciation for equipment and systems that stay dependable under difficult conditions. That perspective carries into my engineering projects, where I push designs to their limits, identify weaknesses, and find ways to make them more resilient. I'm particularly interested in applying this mindset to embedded systems, robotics, and electrical infrastructure.
 
 [Portfolio slides](presentation/Rigoberto_Cortez_Portfolio.pptx) · [Portfolio PDF](presentation/Rigoberto_Cortez_Portfolio.pdf) · [GitHub](https://github.com/pur35t) · [Email](mailto:rcortezcadenas@ucsd.edu)
 
